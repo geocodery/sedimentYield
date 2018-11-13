@@ -1,0 +1,116 @@
+
+R version 3.3.1 (2016-06-21) -- "Bug in Your Hair"
+Copyright (C) 2016 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+
+R es un software libre y viene sin GARANTIA ALGUNA.
+Usted puede redistribuirlo bajo ciertas circunstancias.
+Escriba 'license()' o 'licence()' para detalles de distribucion.
+
+R es un proyecto colaborativo con muchos contribuyentes.
+Escriba 'contributors()' para obtener más información y
+'citation()' para saber cómo citar R o paquetes de R en publicaciones.
+
+Escriba 'demo()' para demostraciones, 'help()' para el sistema on-line de ayuda,
+o 'help.start()' para abrir el sistema de ayuda HTML con su navegador.
+Escriba 'q()' para salir de R.
+
+[Previously saved workspace restored]
+
+> rm(list = ls())
+> #instalacion de librerias necesarias 
+> require(ggplot2)
+Loading required package: ggplot2
+> require(forecast)
+Loading required package: forecast
+Loading required package: zoo
+
+Attaching package: 'zoo'
+
+The following objects are masked from 'package:base':
+
+    as.Date, as.Date.numeric
+
+Loading required package: timeDate
+This is forecast 7.1 
+
+> require(dplyr)
+Loading required package: dplyr
+
+Attaching package: 'dplyr'
+
+The following objects are masked from 'package:stats':
+
+    filter, lag
+
+The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union
+
+> require(shinyBS)
+Loading required package: shinyBS
+> require(data.table)
+Loading required package: data.table
+------------------------------------------------------------------------------
+data.table + dplyr code now lives in dtplyr.
+Please library(dtplyr)!
+------------------------------------------------------------------------------
+
+Attaching package: 'data.table'
+
+The following objects are masked from 'package:dplyr':
+
+    between, last
+
+> require(sp)
+Loading required package: sp
+> require(shiny)
+Loading required package: shiny
+> require(zoo)
+> require(rgeos)
+Loading required package: rgeos
+rgeos version: 0.3-19, (SVN revision 524)
+ GEOS runtime version: 3.5.0-CAPI-1.9.0 r4084 
+ Linking to sp version: 1.2-3 
+ Polygon checking: TRUE 
+
+> require(rgdal)
+Loading required package: rgdal
+rgdal: version: 1.1-10, (SVN revision 622)
+ Geospatial Data Abstraction Library extensions to R successfully loaded
+ Loaded GDAL runtime: GDAL 2.0.1, released 2015/09/15
+ Path to GDAL shared files: C:/Users/Roy/Documents/R/win-library/3.3/rgdal/gdal
+ Loaded PROJ.4 runtime: Rel. 4.9.2, 08 September 2015, [PJ_VERSION: 492]
+ Path to PROJ.4 shared files: C:/Users/Roy/Documents/R/win-library/3.3/rgdal/proj
+ Linking to sp version: 1.2-3 
+> require(raster)
+Loading required package: raster
+
+Attaching package: 'raster'
+
+The following object is masked from 'package:data.table':
+
+    shift
+
+The following object is masked from 'package:dplyr':
+
+    select
+
+> require(leaflet)
+Loading required package: leaflet
+> require(tcltk)
+Loading required package: tcltk
+> #-------------Run-------------
+> path0="C:/Ero1.0/bin/"
+> setwd(path0)
+> load("dataf.Rdata")
+> ero<-brick("C:/Ero1.0/bin/archivos/erobruta.gri")
+> erobruta<-brick("C:/Ero1.0/bin/archivos/eroacum.gri")
+> eroneta<-brick("C:/Ero1.0/bin/archivos/eroneta.gri")
+> if(length(list.files("C:/Ero1.0",all.files = T,full.names = T,pattern = "\\.shp$"))>0){ 
++   s<-shapefile(list.files("C:/Ero1.0",all.files = T,full.names = T,pattern = "\\.shp$"))
++   locs<-data.frame(loc=s$Name,lon=coordinates(s)[,1],lat=coordinates(s)[,2],stringsAsFactors = F)  
++ } else { locs<-read.csv("C:/Ero1.0/station.csv",stringsAsFactors = F)}
+Error in data.frame(loc = s$Name, lon = coordinates(s)[, 1], lat = coordinates(s)[,  : 
+  arguments imply differing number of rows: 0, 7
+Ejecución interrumpida
